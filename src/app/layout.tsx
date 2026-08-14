@@ -10,10 +10,10 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
     metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
     title: 'Honeypot — Miel 100% Pura y Artesanal',
-    description: 'Honeypot ofrece mieles artesanales puras, sin aditivos, extraídas de forma sostenible para amantes de lo natural en México.',
+    description: 'Honeypot ofrece mieles artesanales puras, sin aditivos, extraídas de forma sostenible para amantes de lo natural en Venezuela.',
     icons: {
         icon: [
-            { url: '/favicon.ico', type: 'image/x-icon' },
+            { url: '/assets/images/logo.svg', type: 'image/svg+xml' },
         ],
     },
 };

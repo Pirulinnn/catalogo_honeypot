@@ -43,7 +43,7 @@ export default function SobreNosotros() {
                         </h2>
 
                         <p className="text-muted-foreground leading-relaxed">
-                            En Honeypot, creemos que la mejor miel es la que la naturaleza diseñó, sin adulterar. Nuestras colmenas se encuentran en reservas libres de pesticidas en Puebla, Jalisco y Oaxaca, garantizando que cada tarro conserve el aroma y los fitonutrientes originales.
+                            En Honeypot, creemos que la mejor miel es la que la naturaleza diseñó, sin adulterar. Nuestras colmenas se encuentran en Guanare, Venezuela, garantizando que cada tarro conserve el aroma y los fitonutrientes originales.
                         </p>
 
                         <div className="space-y-3 pt-2">

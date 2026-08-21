@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useCartStore } from '@/store/cartStore';
 import { ShoppingBag, Menu, X, ChevronRight } from 'lucide-react';
@@ -47,8 +48,10 @@ export default function Header() {
 
     return (
         <>
-            {/* Espaciador para evitar solapamiento tras el header fijo */}
-            <div className={`transition-all duration-300 ${scrolled ? 'h-20' : 'h-24'}`} />
+            {/* Espaciador para evitar solapamiento tras el header fijo (solo en páginas secundarias) */}
+            {pathname !== '/' && (
+                <div className={`transition-all duration-300 ${scrolled ? 'h-20' : 'h-24'}`} />
+            )}
 
             <header
                 className="fixed top-0 left-0 right-0 z-50 px-3 sm:px-6"
@@ -102,14 +105,18 @@ export default function Header() {
                     >
                         {/* ─── Izquierda: Logo ─── */}
                         <Link href="/" className="inline-flex items-center gap-3 group flex-shrink-0">
-                            <div className="relative w-10 h-10 rounded-xl bg-gradient-to-br from-amber-400 via-amber-500 to-amber-600 flex items-center justify-center text-amber-950 shadow-lg shadow-amber-500/30 group-hover:scale-110 group-hover:rotate-3 group-hover:shadow-[0_0_18px_rgba(245,158,11,0.6)] transition-all duration-300">
-                                <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
-                                    <path d="M12 2L15.09 5.26L19.5 4.5L18.74 8.91L22 12L18.74 15.09L19.5 19.5L15.09 18.74L12 22L8.91 18.74L4.5 19.5L5.26 15.09L2 12L5.26 8.91L4.5 4.5L8.91 5.26L12 2Z" />
-                                </svg>
+                            <div className="relative w-10 h-10 rounded-xl bg-gradient-to-br from-amber-400 via-amber-500 to-amber-600 flex items-center justify-center text-amber-950 shadow-lg shadow-amber-500/30 group-hover:scale-110 group-hover:rotate-3 group-hover:shadow-[0_0_18px_rgba(245,158,11,0.6)] transition-all duration-300 overflow-hidden p-1">
+                                <Image
+                                    src="/assets/images/logo.svg"
+                                    alt="Honeypot Logo"
+                                    fill
+                                    className="object-contain p-1 drop-shadow-sm"
+                                    priority
+                                />
                             </div>
                             <div className="flex flex-col">
                                 <span className="font-display text-xl font-extrabold tracking-tight text-white group-hover:text-amber-200 transition-colors drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] leading-none">
-                                    Honeypot
+                                    Honey pot
                                 </span>
                                 <span className="text-[9px] tracking-[0.25em] uppercase font-bold text-amber-300/90 drop-shadow-sm mt-0.5">
                                     Miel Pura

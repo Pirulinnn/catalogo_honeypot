@@ -12,7 +12,7 @@ export default function FeaturedProducts() {
     const featuredList = products.filter((p) => p.featured);
 
     return (
-        <section className="py-20 md:py-28 bg-secondary/30 border-t border-border">
+        <section id="catalogo" className="py-20 md:py-28 bg-secondary/30 border-t border-border">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
                     <div className="space-y-3">
@@ -38,7 +38,7 @@ export default function FeaturedProducts() {
                 </div>
 
                 {/* Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="grid grid-cols-2 gap-3 sm:grid-cols-2 lg:grid-cols-3 sm:gap-8">
                     {featuredList.map((product) => (
                         <ProductCard
                             key={product.id}

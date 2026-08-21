@@ -19,6 +19,11 @@ export default function AppImage({
     const [imgSrc, setImgSrc] = useState(src);
     const [hasError, setHasError] = useState(false);
 
+    React.useEffect(() => {
+        setImgSrc(src);
+        setHasError(false);
+    }, [src]);
+
     const handleError = () => {
         if (!hasError) {
             setHasError(true);

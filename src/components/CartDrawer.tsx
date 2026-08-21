@@ -1,20 +1,21 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
+import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useCartStore } from '@/store/cartStore';
 import AppImage from '@/components/ui/AppImage';
-import WhatsAppModal from '@/components/WhatsAppModal';
 import { X, Trash2, Plus, Minus, ShoppingBag, ArrowRight, MessageCircle } from 'lucide-react';
 
 export default function CartDrawer() {
+    const router = useRouter();
     const { items, isOpen, closeCart, updateQuantity, removeItem, clearCart, getTotalPrice } = useCartStore();
-    const [isWhatsAppModalOpen, setIsWhatsAppModalOpen] = useState(false);
 
     const totalPrice = getTotalPrice();
 
     const handleCheckout = () => {
-        setIsWhatsAppModalOpen(true);
+        closeCart();
+        router.push('/checkout');
     };
 
     return (
@@ -82,14 +83,25 @@ export default function CartDrawer() {
                                             </button>
                                         </div>
                                     ) : (
-                                        items.map((item) => (
-                                            <div
-                                                key={item.id}
-                                                className="flex gap-4 p-3 rounded-2xl bg-muted/60 border border-border/60 hover:border-border transition-all"
-                                            >
-                                                <div className="w-20 h-20 rounded-xl overflow-hidden bg-background shrink-0 border border-border">
-                                                    <AppImage src={item.image} alt={item.name} className="w-full h-full object-cover" />
-                                                </div>
+                                        items.map((item) => {
+                                            const isPropoleo =
+                                                item.name.toLowerCase().includes('propóleo') ||
+                                                item.name.toLowerCase().includes('propoleo');
+
+                                            return (
+                                                <div
+                                                    key={item.id}
+                                                    className="flex gap-4 p-3 rounded-2xl bg-muted/60 border border-border/60 hover:border-border transition-all"
+                                                >
+                                                    <div className="w-20 h-20 rounded-xl overflow-hidden bg-background shrink-0 border border-border flex items-center justify-center p-1">
+                                                        <AppImage
+                                                            src={item.image}
+                                                            alt={item.name}
+                                                            className={`w-full h-full object-contain ${
+                                                                isPropoleo ? 'scale-120' : 'scale-105'
+                                                            }`}
+                                                        />
+                                                    </div>
 
                                                 <div className="flex-1 flex flex-col justify-between">
                                                     <div className="flex justify-between items-start">
@@ -133,7 +145,8 @@ export default function CartDrawer() {
                                                     </div>
                                                 </div>
                                             </div>
-                                        ))
+                                            );
+                                        })
                                     )}
                                 </div>
 
@@ -179,13 +192,6 @@ export default function CartDrawer() {
                     </div>
                 )}
             </AnimatePresence>
-
-            <WhatsAppModal
-                isOpen={isWhatsAppModalOpen}
-                onClose={() => setIsWhatsAppModalOpen(false)}
-                items={items}
-                total={totalPrice}
-            />
         </>
     );
 }

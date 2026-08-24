@@ -53,6 +53,17 @@ export default function ProductCatalog() {
                     <p className="text-muted-foreground text-xs sm:text-base leading-relaxed max-w-2xl mx-auto">
                         Descubre nuestra selección de mieles puras, superalimentos de la colmena, snacks saludables y presentaciones al mayor.
                     </p>
+
+                    {/* BCV Official Rate Informative Badge */}
+                    <div className="flex items-center justify-center pt-1">
+                        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/25 text-amber-900 dark:text-amber-200 text-xs sm:text-sm font-medium shadow-xs">
+                            <span className="flex h-2 w-2 relative">
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+                                <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
+                            </span>
+                            <span>Precios en USD • Pagos en Bs. calculados a <strong>tasa oficial BCV del día</strong></span>
+                        </div>
+                    </div>
                 </div>
 
                 {/* Filters & Search Controls Container */}

@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import dynamic from 'next/dynamic';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
@@ -177,6 +178,8 @@ export default function CheckoutModal({ isOpen, onClose, items, total }: Checkou
             '',
             '💳 *FORMA(S) DE PAGO SELECCIONADA(S):*',
             `• ${paymentMethods.join(', ')}`,
+            '',
+            '*Nota de pago:* Los pagos en Bs. se reciben a la tasa oficial BCV vigente a la tasa del día.',
             '',
             '🐝 _Enviado desde el catálogo web de Honeypot. ¡Muchas gracias!_',
         ];
@@ -459,6 +462,19 @@ export default function CheckoutModal({ isOpen, onClose, items, total }: Checkou
                                         );
                                     })}
                                 </div>
+
+                                {/* Aclaratoria de tasa al seleccionar Pago Móvil */}
+                                {paymentMethods.includes('Pago Móvil') && (
+                                    <div className="p-2.5 rounded-xl bg-amber-500/10 dark:bg-stone-900/60 border border-amber-500/20 text-amber-950 dark:text-stone-300 text-xs leading-relaxed flex items-start gap-2">
+                                        <svg className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        <p className="text-[11px]">
+                                            Para pagos en Bolívares (Pago Móvil / Transferencia), el monto exacto se calcula a la <strong>tasa oficial del BCV vigente a la tasa del día</strong>.
+                                        </p>
+                                    </div>
+                                )}
+
                                 {touched && errors.paymentMethods && (
                                     <p className="text-[11px] text-rose-600 mt-1 flex items-center gap-1">
                                         <AlertCircle size={11} /> {errors.paymentMethods}
@@ -487,9 +503,15 @@ export default function CheckoutModal({ isOpen, onClose, items, total }: Checkou
                             <button
                                 type="button"
                                 onClick={handleSendOrder}
-                                className="whatsapp-btn w-full font-bold shadow-lg shadow-emerald-600/20 text-sm sm:text-base py-3.5 cursor-pointer"
+                                className="whatsapp-btn w-full font-bold shadow-lg shadow-emerald-600/20 text-sm sm:text-base py-3.5 cursor-pointer flex items-center justify-center gap-2"
                             >
-                                <MessageCircle size={20} />
+                                <Image
+                                    src="/assets/images/whatsapp_logo.svg"
+                                    alt="WhatsApp"
+                                    width={22}
+                                    height={22}
+                                    className="w-5 h-5 shrink-0"
+                                />
                                 <span>Enviar Pedido por WhatsApp</span>
                             </button>
 

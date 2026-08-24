@@ -1,11 +1,12 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useCartStore } from '@/store/cartStore';
 import AppImage from '@/components/ui/AppImage';
-import { X, Trash2, Plus, Minus, ShoppingBag, ArrowRight, MessageCircle } from 'lucide-react';
+import { X, Trash2, Plus, Minus, ShoppingBag, ArrowRight } from 'lucide-react';
 
 export default function CartDrawer() {
     const router = useRouter();
@@ -166,6 +167,16 @@ export default function CartDrawer() {
                                                 <span>Total</span>
                                                 <span className="text-primary text-xl">${totalPrice.toLocaleString('en-US')} USD</span>
                                             </div>
+
+                                            {/* Nota aclaratoria de Tasa Oficial BCV */}
+                                            <div className="mt-3 p-3 rounded-xl bg-amber-500/10 dark:bg-stone-900/60 border border-amber-500/20 text-amber-950 dark:text-stone-300 text-xs leading-relaxed flex items-start gap-2.5">
+                                                <svg className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                </svg>
+                                                <p>
+                                                    Para pagos en Bolívares (Pago Móvil / Transferencia), el monto exacto se calcula a la <strong>tasa oficial del Banco Central de Venezuela (BCV) vigente a la tasa del día</strong>.
+                                                </p>
+                                            </div>
                                         </div>
 
                                         <div className="space-y-2">
@@ -173,7 +184,13 @@ export default function CartDrawer() {
                                                 onClick={handleCheckout}
                                                 className="whatsapp-btn w-full font-semibold shadow-lg text-sm py-3"
                                             >
-                                                <MessageCircle size={18} />
+                                                <Image
+                                                    src="/assets/images/whatsapp_logo.svg"
+                                                    alt="WhatsApp"
+                                                    width={20}
+                                                    height={20}
+                                                    className="w-5 h-5 shrink-0"
+                                                />
                                                 <span>Pedir por WhatsApp</span>
                                                 <ArrowRight size={16} />
                                             </button>

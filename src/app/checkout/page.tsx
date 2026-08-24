@@ -223,8 +223,8 @@ export default function CheckoutPage() {
             .join('\n');
 
         const deliveryDetail = deliveryType === 'inmediata'
-            ? '⏰ *Tipo de entrega:* Inmediata (Lo antes posible)'
-            : `⏰ *Entrega programada:* ${formatScheduledDateTime(scheduledDateTime)}`;
+            ? '*Tipo de entrega:* Inmediata (Lo antes posible)'
+            : `*Entrega programada:* ${formatScheduledDateTime(scheduledDateTime)}`;
 
         const messageLines = [
             '*¡NUEVO PEDIDO!*',
@@ -246,6 +246,8 @@ export default function CheckoutPage() {
             '',
             '*FORMA(S) DE PAGO:*',
             `• ${paymentMethods.join(', ')}`,
+            '',
+            '*Nota de pago:* Los pagos en Bs. se reciben a la tasa oficial BCV vigente a la tasa del día.',
             '',
             '*Pedido generado desde el portal oficial de Honeypot. ¡Quedo a la espera de su confirmación!*',
         ];
@@ -279,7 +281,7 @@ export default function CheckoutPage() {
             <header className="sticky top-0 z-40 bg-background/90 backdrop-blur-md border-b border-border shadow-sm">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
                     <Link
-                        href="/"
+                        href="/products"
                         className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-muted-foreground hover:text-foreground transition-colors group"
                     >
                         <div className="w-8 h-8 rounded-xl border border-border flex items-center justify-center group-hover:border-amber-500 group-hover:bg-amber-50 dark:group-hover:bg-amber-950/40 transition-all">
@@ -341,9 +343,9 @@ export default function CheckoutPage() {
                         {/* Page Header */}
                         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2 border-b border-border/80">
                             <div>
-                                <h1 className="font-display font-bold text-2xl sm:text-3xl text-foreground tracking-tight">
+                                <h3 className="font-display font-bold text-2xl sm:text-3xl text-foreground tracking-tight">
                                     Finalizar Pedido
-                                </h1>
+                                </h3>
                                 <p className="text-xs sm:text-sm text-muted-foreground mt-0.5">
                                     Ingresa los datos para coordinar tu despacho directamente por WhatsApp
                                 </p>
@@ -704,6 +706,16 @@ export default function CheckoutPage() {
                                                 ${totalPrice.toLocaleString('en-US')} USD
                                             </span>
                                         </div>
+
+                                        {/* Nota aclaratoria de Tasa Oficial BCV */}
+                                        <div className="mt-3 p-3 rounded-xl bg-amber-500/10 dark:bg-stone-900/60 border border-amber-500/20 text-amber-950 dark:text-stone-300 text-xs leading-relaxed flex items-start gap-2.5">
+                                            <svg className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                            </svg>
+                                            <p>
+                                                Para pagos en Bolívares (Pago Móvil / Transferencia), el monto exacto se calcula a la <strong>tasa oficial del Banco Central de Venezuela (BCV) vigente a la tasa del día</strong>.
+                                            </p>
+                                        </div>
                                     </div>
                                 </section>
 
@@ -751,6 +763,19 @@ export default function CheckoutPage() {
                                             );
                                         })}
                                     </div>
+
+                                    {/* Aclaratoria de tasa al seleccionar Pago Móvil */}
+                                    {paymentMethods.includes('Pago Móvil') && (
+                                        <div className="p-3 rounded-xl bg-amber-500/10 dark:bg-stone-900/60 border border-amber-500/20 text-amber-950 dark:text-stone-300 text-xs leading-relaxed flex items-start gap-2.5">
+                                            <svg className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                            </svg>
+                                            <p>
+                                                Para pagos en Bolívares (Pago Móvil / Transferencia), el monto exacto se calcula a la <strong>tasa oficial del Banco Central de Venezuela (BCV) vigente a la tasa del día</strong>.
+                                            </p>
+                                        </div>
+                                    )}
+
                                     {touched && errors.paymentMethods && (
                                         <p className="text-[11px] text-rose-600 mt-1 flex items-center gap-1">
                                             <AlertCircle size={12} /> {errors.paymentMethods}
@@ -776,7 +801,13 @@ export default function CheckoutPage() {
                                             </>
                                         ) : (
                                             <>
-                                                <MessageCircle size={22} />
+                                                <Image
+                                                    src="/assets/images/whatsapp_logo.svg"
+                                                    alt="WhatsApp"
+                                                    width={24}
+                                                    height={24}
+                                                    className="w-6 h-6 shrink-0"
+                                                />
                                                 <span>Confirmar Pedido vía WhatsApp</span>
                                             </>
                                         )}

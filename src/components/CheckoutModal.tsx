@@ -159,29 +159,29 @@ export default function CheckoutModal({ isOpen, onClose, items, total }: Checkou
             .join('\n');
 
         const messageLines = [
-            '🍯 *¡NUEVO PEDIDO - HONEYPOT!* 🍯',
+            '*¡NUEVO PEDIDO - HONEYPOT!* ',
             '',
-            '📋 *RESUMEN DEL PEDIDO:*',
+            '*RESUMEN DEL PEDIDO:*',
             itemsList,
             '',
-            `💰 *TOTAL A PAGAR:* $${total.toLocaleString('en-US')} USD`,
+            `*TOTAL A PAGAR:* $${total.toLocaleString('en-US')} USD`,
             '',
-            '👤 *DATOS DEL CLIENTE:*',
+            '*DATOS DEL CLIENTE*',
             `• *Nombre y Apellido:* ${name.trim()}`,
             `• *Cédula de Identidad:* ${idNumber.trim()}`,
             `• *Teléfono de Contacto:* ${phone.trim()}`,
             '',
-            '🚚 *DETALLES DE ENTREGA:*',
+            '*DETALLES DE ENTREGA*:',
             `• *Ubicación GPS (Google Maps):* ${location?.mapUrl || 'No especificada'}`,
             `• *Franja Horaria:* ${timeSlot}`,
             notes.trim() ? `• *Notas de Entrega:* ${notes.trim()}` : '• *Notas de Entrega:* Ninguna',
             '',
-            '💳 *FORMA(S) DE PAGO SELECCIONADA(S):*',
+            '*FORMA(S) DE PAGO SELECCIONADA(S):*',
             `• ${paymentMethods.join(', ')}`,
             '',
             '*Nota de pago:* Los pagos en Bs. se reciben a la tasa oficial BCV vigente a la tasa del día.',
             '',
-            '🐝 _Enviado desde el catálogo web de Honeypot. ¡Muchas gracias!_',
+            '_Enviado desde el catálogo web de Honeypot. ¡Muchas gracias!_',
         ];
 
         const fullMessage = encodeURIComponent(messageLines.join('\n'));

@@ -13,6 +13,8 @@ const WHATSAPP_NUMBER = '+584127665595';
 const INSTAGRAM_LINK = 'https://www.instagram.com/honeypot.ve';
 const TIKTOK_LINK = 'https://www.tiktok.com/@honeypot.ve';
 const CONTACT_EMAIL = 'honeypot.ve@gmail.com';
+const COMPANY_NAME = 'Agropecuaria Honey Pot C.A';
+const COMPANY_RIF = 'J-508633660';
 
 /* ─── Navigation links ─── */
 const NAV_LINKS = [
@@ -116,7 +118,7 @@ export default function Footer() {
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-16">
 
                         {/* ── Col 1: Brand & Identity ── */}
-                        <div className="space-y-5">
+                        <div className="space-y-4">
                             <Link href="/" className="inline-flex items-center gap-3.5 group">
                                 {/* Isotipo Logo */}
                                 <div className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-amber-400 via-amber-500 to-amber-600 flex items-center justify-center p-1.5 shadow-md shadow-amber-500/25 group-hover:scale-105 group-hover:shadow-amber-500/40 transition-all duration-300 shrink-0">
@@ -141,16 +143,27 @@ export default function Footer() {
                                 </div>
                             </Link>
 
+                            {/* Razón Social */}
+                            <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-amber-500/10 border border-amber-500/20 text-amber-300/90 text-xs font-medium">
+                                <span>{COMPANY_NAME}</span>
+                            </div>
+
                             <p className="text-sm leading-relaxed text-stone-400 max-w-xs">
                                 Miel 100% pura y artesanal, cosechada con pasión y respeto por la naturaleza. Cada gota, un regalo de las abejas venezolanas.
                             </p>
 
-                            {/* Location badge */}
-                            <div className="flex items-center gap-2 text-sm text-stone-400">
-                                <div className="w-8 h-8 rounded-full bg-amber-500/10 border border-amber-500/30 flex items-center justify-center">
-                                    <MapPin size={14} className="text-amber-400" />
+                            {/* Location & Fiscal info */}
+                            <div className="flex flex-wrap items-center gap-2.5 text-xs text-stone-400 pt-1">
+                                <div className="flex items-center gap-2">
+                                    <div className="w-7 h-7 rounded-full bg-amber-500/10 border border-amber-500/30 flex items-center justify-center">
+                                        <MapPin size={13} className="text-amber-400" />
+                                    </div>
+                                    <span>Venezuela, Caracas</span>
                                 </div>
-                                <span>Venezuela, Caracas</span>
+                                <span className="text-stone-700">•</span>
+                                <span className="font-mono text-stone-300 bg-stone-900/90 border border-stone-800/90 px-2 py-0.5 rounded text-[11px]">
+                                    RIF: {COMPANY_RIF}
+                                </span>
                             </div>
                         </div>
 
@@ -223,9 +236,16 @@ export default function Footer() {
 
                     {/* ── Legal Bar ── */}
                     <div className="border-t border-stone-800/80 mt-12 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone-500">
-                        <p className="flex items-center gap-1.5">
-                            © {new Date().getFullYear()} HONEY POT. Todos los derechos reservados.
-                            <Heart size={12} className="text-rose-500/70 fill-rose-500/70" />
+                        <div className="flex flex-wrap items-center justify-center sm:justify-start gap-x-2 gap-y-1 text-center sm:text-left">
+                            <p className="flex items-center gap-1.5">
+                                © {new Date().getFullYear()} <span className="text-stone-300 font-medium">{COMPANY_NAME}</span>. Todos los derechos reservados.
+                                <Heart size={12} className="text-rose-500/70 fill-rose-500/70 shrink-0" />
+                            </p>
+                            <span className="hidden sm:inline text-stone-700">•</span>
+                            <span className="font-mono text-stone-400">RIF: {COMPANY_RIF}</span>
+                        </div>
+                        <p className="text-stone-500 text-[11px]">
+                            Miel 100% pura • Hecho en Venezuela
                         </p>
                     </div>
                 </div>

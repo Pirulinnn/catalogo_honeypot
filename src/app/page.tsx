@@ -8,17 +8,17 @@ import FeaturedProducts from './components/FeaturedProducts';
 import CartDrawer from '@/components/CartDrawer';
 
 export default function HomePage() {
-    return (
-        <div className="min-h-screen bg-background honeycomb-bg">
-            <Header />
-            <main>
-                <HeroSection />
-                <SobreNosotros />
-                <BeneficiosSection />
-                <FeaturedProducts />
-            </main>
-            <Footer />
-            <CartDrawer />
-        </div>
-    );
+  return (
+    <div className="min-h-screen bg-background honeycomb-bg">
+      <Header />
+      <main>
+        <HeroSection />
+        <SobreNosotros />
+        <BeneficiosSection />
+        <FeaturedProducts />
+      </main>
+      <Footer />
+      <CartDrawer />
+    </div>
+  );
 }

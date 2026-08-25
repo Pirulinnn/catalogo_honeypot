@@ -8,5 +8,5 @@ import ProductCatalog from '@/app/products/components/ProductCatalog';
  * Re-exports the main ProductCatalog component for use across the application.
  */
 export default function Catalog() {
-    return <ProductCatalog />;
+  return <ProductCatalog />;
 }

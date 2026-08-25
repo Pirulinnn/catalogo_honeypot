@@ -1,4 +1,4 @@
-@import "leaflet/dist/leaflet.css";
+@import 'leaflet/dist/leaflet.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -32,7 +32,8 @@
 
     --radius: 0.75rem;
 
-    --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-sans:
+      'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     --font-display: 'Outfit', 'Georgia', serif;
   }
 
@@ -67,9 +68,13 @@
 @layer utilities {
   .honeycomb-bg {
     background-color: var(--background);
-    background-image: radial-gradient(#d97706 0.75px, transparent 0.75px), radial-gradient(#d97706 0.75px, var(--background) 0.75px);
+    background-image:
+      radial-gradient(#d97706 0.75px, transparent 0.75px),
+      radial-gradient(#d97706 0.75px, var(--background) 0.75px);
     background-size: 30px 30px;
-    background-position: 0 0, 15px 15px;
+    background-position:
+      0 0,
+      15px 15px;
     background-opacity: 0.04;
   }
 
@@ -88,8 +93,7 @@
   }
   /* Hide scrollbar for IE, Edge and Firefox */
   .no-scrollbar {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
   }
 }
-

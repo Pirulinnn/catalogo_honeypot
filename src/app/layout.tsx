@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     template: '%s | Honey Pot',
   },
   description:
-    'Miel cruda recolectada en Guanare, Portuguesa. Envíos directos en Caracas y Venezuela.',
+    'Miel pura y artesanal cosechada en Guanare, Portuguesa. Envíos directos en Caracas y Venezuela.',
   keywords: [
     'miel pura venezuela',
     'miel artesanal caracas',
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Honey Pot | Miel 100% Pura y Artesanal',
     description:
-      'Miel pura y artesanal cosechada en Portuguesa. Descubre el néctar dorado de Venezuela.',
+      'Miel pura y artesanal de Guanare, Portuguesa. Descubre el néctar dorado de Venezuela.',
     url: siteUrl,
     siteName: 'Honey Pot Venezuela',
     locale: 'es_VE',
@@ -83,13 +83,6 @@ export default function RootLayout({
       <body>
         <JsonLd />
         {children}
-
-        <script
-          type="module"
-          async
-          src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fhoneypot1835back.builtwithrocket.new&_be=https%3A%2F%2Fappanalytics.rocket.new&_v=0.1.20"
-        />
-        <script type="module" defer src="https://static.rocket.new/rocket-shot.js?v=0.0.2" />
       </body>
     </html>
   );

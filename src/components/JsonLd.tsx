@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://catalogo-honeypot.pages.dev';
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://catalogo-honeypot.pages.dev';
 
 export default function JsonLd() {
   const jsonLd = {
@@ -12,9 +12,9 @@ export default function JsonLd() {
     taxID: 'J-508633660',
     description:
       'Tienda de miel artesanal pura cosechada en Guanare con distribución en Caracas y Venezuela.',
-    url: SITE_URL,
-    logo: `${SITE_URL}/assets/images/logo.svg`,
-    image: `${SITE_URL}/assets/images/og_honeypot.jpg`,
+    url: siteUrl,
+    logo: `${siteUrl}/assets/images/logo.svg`,
+    image: `${siteUrl}/assets/images/og_honeypot.jpg`,
     telephone: '+584127665595',
     email: 'honeypot.ve@gmail.com',
     priceRange: '$$',

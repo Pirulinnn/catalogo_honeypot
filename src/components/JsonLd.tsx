@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.honeypot.ve';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://catalogo-honeypot.pages.dev';
 
 export default function JsonLd() {
   const jsonLd = {

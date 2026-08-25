@@ -3,7 +3,7 @@ import type { Metadata, Viewport } from 'next';
 import JsonLd from '@/components/JsonLd';
 import '../styles/tailwind.css';
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://catalogo-honeypot.pages.dev';
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://honeypotve.com';
 const OG_IMAGE_URL = '/assets/images/og_honeypot.jpg';
 
 export const viewport: Viewport = {

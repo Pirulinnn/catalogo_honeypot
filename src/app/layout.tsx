@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Honey Pot | Miel 100% Pura y Artesanal',
     description:
-      'Miel pura y artesanal recolectada en Guanare, Portuguesa. Descubre el néctar dorado de Venezuela.',
+      'Miel pura recolectada en Guanare, Portuguesa. Envíos directos en Caracas y Venezuela.',
     url: siteUrl,
     siteName: 'Honey Pot Venezuela',
     locale: 'es_VE',
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
         url: OG_IMAGE_URL,
         width: 1200,
         height: 630,
-        alt: 'Honey Pot - Miel Artesanal',
+        alt: 'Honey Pot - Miel Artesanal Venezolana',
         type: 'image/jpeg',
       },
     ],
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Honey Pot | Miel 100% Pura y Artesanal',
-    description: 'Miel pura y artesanal de Guanare, Portuguesa.',
+    description: 'Miel pura y artesanal cosechada en Portuguesa.',
     images: [OG_IMAGE_URL],
   },
   icons: {

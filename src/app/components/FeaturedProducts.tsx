@@ -21,15 +21,16 @@ export default function FeaturedProducts() {
               <span>Selección Especial</span>
             </div>
             <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground tracking-tight">
-              Nuestras Mieles Destacadas
+              Mieles Puras y Productos de la Colmena Destacados
             </h2>
             <p className="text-muted-foreground text-sm max-w-xl">
-              Las cosechas más aclamadas por nuestros clientes por su aroma, pureza y textura única.
+              Nuestras cosechas y extractos apícolas más solicitados por su pureza garantizada, sabor y propiedades.
             </p>
           </div>
 
           <Link
             href="/products"
+            title="Explorar el catálogo completo de miel pura, polen y propóleo"
             className="inline-flex items-center gap-2 text-primary font-semibold text-sm hover:gap-3 transition-all shrink-0"
           >
             <span>Ver Catálogo Completo</span>

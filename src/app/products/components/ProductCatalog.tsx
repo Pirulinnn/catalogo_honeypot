@@ -46,12 +46,12 @@ export default function ProductCatalog() {
           </div>
 
           <h1 className="font-display text-3xl sm:text-5xl font-extrabold text-foreground tracking-tight">
-            Catálogo de Productos
+            Catálogo de Miel Pura y Derivados de la Colmena
           </h1>
 
           <p className="text-muted-foreground text-xs sm:text-base leading-relaxed max-w-2xl mx-auto">
-            Descubre nuestra selección de mieles puras, superalimentos de la colmena, snacks
-            saludables y presentaciones al mayor.
+            Descubre nuestra selección de miel 100% pura y cruda, polen floral, extracto de propóleo
+            y presentaciones al mayor con envíos en Caracas y toda Venezuela.
           </p>
 
           {/* BCV Official Rate Informative Badge */}

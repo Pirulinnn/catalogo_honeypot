@@ -109,7 +109,7 @@ export default function Header() {
               <div className="relative w-10 h-10 rounded-xl bg-gradient-to-br from-amber-400 via-amber-500 to-amber-600 flex items-center justify-center text-amber-950 shadow-lg shadow-amber-500/30 group-hover:scale-110 group-hover:rotate-3 group-hover:shadow-[0_0_18px_rgba(245,158,11,0.6)] transition-all duration-300 overflow-hidden p-1">
                 <Image
                   src="/assets/images/logo.svg"
-                  alt="Honeypot Logo"
+                  alt="Honey Pot - Miel 100% Pura Logo"
                   fill
                   className="object-contain p-1 drop-shadow-sm"
                   priority

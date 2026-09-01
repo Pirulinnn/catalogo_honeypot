@@ -38,7 +38,7 @@ export default function SobreNosotros() {
               <div className="relative aspect-[4/3] sm:aspect-[16/11] lg:aspect-[4/5] w-full rounded-3xl overflow-hidden border border-amber-200/80 bg-amber-100 shadow-2xl shadow-amber-900/10">
                 <Image
                   src={HONEY_DETAIL_IMAGE}
-                  alt="Miel Pura Honey Pot de Guanare, Portuguesa"
+                  alt="Miel 100% pura y artesanal Honey Pot cosechada en Guanare Portuguesa Venezuela"
                   fill
                   sizes="(max-width: 1024px) 100vw, 42vw"
                   className="object-cover object-center transform group-hover:scale-105 transition-transform duration-700 ease-out"
@@ -90,7 +90,7 @@ export default function SobreNosotros() {
 
             {/* 2. Título de Impacto Editorial */}
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-stone-900 leading-tight mb-4 tracking-tight">
-              El Néctar Dorado de Venezuela
+              El Néctar Dorado de Venezuela | Miel Pura de Guanare
             </h2>
 
             {/* 3. Bloque de Origen (Párrafo 1 con palabras clave resaltadas) */}

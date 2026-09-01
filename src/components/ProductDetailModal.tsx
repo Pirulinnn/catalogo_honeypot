@@ -75,7 +75,7 @@ export default function ProductDetailModal({ product, isOpen, onClose }: Product
                 <div className="aspect-square w-full rounded-2xl overflow-hidden bg-muted/60 border border-border flex items-center justify-center p-2 sm:p-3">
                   <AppImage
                     src={product.image}
-                    alt={product.name}
+                    alt={`${product.name} ${product.weight} - Miel 100% pura y artesanal Honey Pot Venezuela`}
                     className={`w-full h-full object-contain ${
                       isPropoleo ? 'scale-125' : 'scale-105'
                     }`}

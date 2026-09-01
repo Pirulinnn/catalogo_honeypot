@@ -53,12 +53,12 @@ export default function BeneficiosSection() {
           </div>
 
           <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground tracking-tight">
-            Razones para incorporar miel 100% pura a tu rutina diaria
+            Beneficios de la Miel 100% Pura y Cruda para tu Salud
           </h2>
 
           <p className="text-muted-foreground leading-relaxed">
-            A diferencia del azúcar procesado, la miel artesanal es un superalimento vivo cargado de
-            enzimas, minerales y compuestos bioactivos.
+            A diferencia del azúcar procesado, la miel artesanal de Honey Pot es un superalimento vivo cargado de
+            enzimas, minerales y compuestos bioactivos naturales.
           </p>
         </div>
 

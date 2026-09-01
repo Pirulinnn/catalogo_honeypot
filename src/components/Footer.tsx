@@ -127,7 +127,7 @@ export default function Footer() {
                   <div className="relative w-full h-full">
                     <Image
                       src={LOGO_SRC}
-                      alt="Honeypot Logo"
+                      alt="Honey Pot - Miel 100% Pura de Abeja Logo"
                       fill
                       className="object-contain drop-shadow-sm"
                     />
@@ -138,7 +138,7 @@ export default function Footer() {
                 <div className="relative h-12 sm:h-14 md:h-16 w-48 sm:w-60 md:w-72 flex items-center">
                   <Image
                     src={STORE_NAME_SRC}
-                    alt="Honey Pot"
+                    alt="Honey Pot Venezuela - Miel Artesanal Pura"
                     fill
                     className="object-contain object-left brightness-110 group-hover:brightness-125 transition-all duration-300"
                   />
@@ -151,8 +151,7 @@ export default function Footer() {
               </div>
 
               <p className="text-sm leading-relaxed text-stone-400 max-w-xs">
-                Miel 100% pura y artesanal, cosechada con pasión y respeto por la naturaleza. Cada
-                gota, un regalo de las abejas venezolanas.
+                Miel 100% pura y artesanal cosechada en Guanare, Portuguesa. Envíos y entregas en Caracas y toda Venezuela.
               </p>
 
               {/* Location & Fiscal info */}
@@ -161,7 +160,7 @@ export default function Footer() {
                   <div className="w-7 h-7 rounded-full bg-amber-500/10 border border-amber-500/30 flex items-center justify-center">
                     <MapPin size={13} className="text-amber-400" />
                   </div>
-                  <span>Venezuela, Caracas</span>
+                  <span>Guanare, Portuguesa • Caracas, VE</span>
                 </div>
                 <span className="text-stone-700">•</span>
                 <span className="font-mono text-stone-300 bg-stone-900/90 border border-stone-800/90 px-2 py-0.5 rounded text-[11px]">

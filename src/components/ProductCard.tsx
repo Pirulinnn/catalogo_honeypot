@@ -39,13 +39,14 @@ export default function ProductCard({ product, onSelectProduct }: ProductCardPro
   return (
     <div
       onClick={() => onSelectProduct?.(product)}
+      title={`${product.name} ${product.weight} - Honey Pot Venezuela`}
       className="group relative bg-card rounded-2xl sm:rounded-3xl overflow-hidden border border-border shadow-rustic hover:shadow-rustic-hover transition-all duration-300 flex flex-col cursor-pointer select-none"
     >
       {/* 1. Contenedor de Imagen */}
       <div className="relative w-full aspect-square overflow-hidden bg-amber-950/5 dark:bg-amber-950/20 rounded-t-xl sm:rounded-t-2xl flex items-center justify-center p-1.5 sm:p-2">
         <AppImage
           src={product.image}
-          alt={product.name}
+          alt={`${product.name} ${product.weight} - Miel pura artesanal Honey Pot cosechada en Guanare Portuguesa`}
           className={`w-full h-full object-contain transition-transform duration-300 ${
             isPropoleo ? 'scale-125 group-hover:scale-[1.32]' : 'scale-105 group-hover:scale-110'
           }`}

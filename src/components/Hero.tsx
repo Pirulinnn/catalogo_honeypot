@@ -21,11 +21,16 @@ export default function Hero() {
 
   return (
     <section className="relative w-full min-h-screen flex flex-col justify-center items-center overflow-visible bg-stone-950 pt-28 pb-16 px-3 sm:px-6">
+      {/* ─── Encabezado H1 Semántico Principal para Motores de Búsqueda ─── */}
+      <h1 className="sr-only">
+        Honey Pot | Miel 100% Pura y Artesanal en Caracas y Venezuela
+      </h1>
+
       {/* ─── 1. Capa Aislada para Imagen de Fondo Desenfocada ─── */}
       <div className="absolute inset-0 overflow-hidden z-0 pointer-events-none">
         <Image
           src={HERO_BG_IMAGE}
-          alt="Fondo Natural Honeypot"
+          alt="Cosecha artesanal y colmenas de miel pura Honey Pot en Guanare Portuguesa"
           fill
           priority
           className="object-cover object-center filter blur-md scale-105 opacity-55 z-0"
@@ -48,7 +53,7 @@ export default function Hero() {
           <div className="relative w-full aspect-[4/5] sm:aspect-auto sm:h-full sm:min-h-[460px] rounded-t-[32px] sm:rounded-2xl overflow-hidden bg-[#e5a823] shadow-inner">
             <Image
               src={PRODUCT_IMAGE}
-              alt="Frasco de Miel Pura Honeypot"
+              alt="Frasco de Miel 100% Pura de Abeja Honey Pot cosechada en Guanare Portuguesa"
               fill
               priority
               className="object-cover object-center"
@@ -61,7 +66,7 @@ export default function Hero() {
             <div className="relative w-full max-w-[92%] sm:max-w-[95%] h-24 sm:h-32 md:h-36 mx-auto flex items-center justify-center my-1">
               <Image
                 src={TITLE_IMAGE}
-                alt="HONEYPOT"
+                alt="Honey Pot - Miel 100% Pura y Artesanal Venezuela"
                 fill
                 priority
                 sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 420px"
@@ -79,6 +84,8 @@ export default function Hero() {
             <button
               type="button"
               onClick={handleScrollToCatalog}
+              title="Explorar el catálogo de mieles y productos de la colmena Honey Pot"
+              aria-label="Ver productos del catálogo Honey Pot"
               className="bg-stone-950/90 hover:bg-amber-500 text-stone-100 hover:text-stone-950 border border-amber-500/40 rounded-full py-3 sm:py-3.5 px-8 sm:px-10 font-semibold text-sm transition-all duration-300 shadow-lg w-full sm:w-fit cursor-pointer mx-auto flex items-center justify-center gap-2"
             >
               <span>Ver productos</span>

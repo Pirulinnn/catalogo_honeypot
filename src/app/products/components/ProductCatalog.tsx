@@ -6,6 +6,7 @@ import ProductCard from '@/components/ProductCard';
 import ProductDetailModal from '@/components/ProductDetailModal';
 import CategoryFilter from '@/components/CategoryFilter';
 import { Search, SlidersHorizontal, Sparkles, X } from 'lucide-react';
+import FreeDeliveryProgress from '@/components/FreeDeliveryProgress';
 
 export default function ProductCatalog() {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
@@ -65,6 +66,11 @@ export default function ProductCatalog() {
                 Precios en USD • Pagos en Bs. calculados a <strong>tasa oficial BCV del día</strong>
               </span>
             </div>
+          </div>
+
+          {/* Free Delivery Goal & Progress Banner */}
+          <div className="pt-2 max-w-xl mx-auto">
+            <FreeDeliveryProgress />
           </div>
         </div>
 

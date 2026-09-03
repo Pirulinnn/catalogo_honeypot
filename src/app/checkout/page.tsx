@@ -24,8 +24,17 @@ import {
   Minus,
   Calendar,
   Zap,
+  CheckCircle2,
 } from 'lucide-react';
-import { useCartStore } from '@/store/cartStore';
+import {
+  useCartStore,
+  selectSubtotal,
+  selectIsFreeDelivery,
+  selectDeliveryFee,
+  selectTotal,
+  DEFAULT_DELIVERY_FEE,
+} from '@/store/cartStore';
+import FreeDeliveryProgress from '@/components/FreeDeliveryProgress';
 import AppImage from '@/components/ui/AppImage';
 import Image from 'next/image';
 import type { LocationData } from '@/components/LocationPicker';
@@ -95,7 +104,12 @@ const PAYMENT_OPTIONS = [
 ] as const;
 
 export default function CheckoutPage() {
-  const { items, updateQuantity, removeItem, clearCart, getTotalPrice } = useCartStore();
+  const { items, updateQuantity, removeItem, clearCart } = useCartStore();
+
+  const subtotal = useCartStore(selectSubtotal);
+  const isFreeDelivery = useCartStore(selectIsFreeDelivery);
+  const deliveryFee = useCartStore(selectDeliveryFee);
+  const total = useCartStore(selectTotal);
 
   // Hydration check to prevent SSR mismatches with persisted zustand/localStorage
   const [isHydrated, setIsHydrated] = useState(false);
@@ -118,8 +132,6 @@ export default function CheckoutPage() {
   const [touched, setTouched] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const totalPrice = getTotalPrice();
 
   // Check if scheduled date/time is invalid for disabling submit button
   const isScheduledInvalid =
@@ -246,13 +258,19 @@ export default function CheckoutPage() {
         ? '*Tipo de entrega:* Inmediata (Lo antes posible)'
         : `*Entrega programada:* ${formatScheduledDateTime(scheduledDateTime)}`;
 
+    const deliveryLine = isFreeDelivery
+      ? '• *Delivery:* ¡GRATIS! (Promoción compras ≥ $20 USD)'
+      : '• *Delivery:* Coordinado por WhatsApp';
+
     const messageLines = [
       '*¡NUEVO PEDIDO!*',
       '',
       '*RESUMEN DE LA COMPRA:*',
       itemsList,
       '',
-      `*TOTAL A PAGAR:* $${totalPrice.toLocaleString('en-US')} USD`,
+      `• *Subtotal productos:* $${subtotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} USD`,
+      deliveryLine,
+      `*TOTAL A PAGAR:* $${total.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} USD`,
       '',
       '*DATOS DEL CLIENTE:*',
       `• *Nombre y Apellido:* ${name.trim()}`,
@@ -414,9 +432,8 @@ export default function CheckoutPage() {
                             setName(e.target.value);
                             if (errors.name) setErrors((prev) => ({ ...prev, name: '' }));
                           }}
-                          className={`${inputClass} pl-10 ${
-                            touched && errors.name ? 'border-rose-500 focus:ring-rose-500' : ''
-                          }`}
+                          className={`${inputClass} pl-10 ${touched && errors.name ? 'border-rose-500 focus:ring-rose-500' : ''
+                            }`}
                         />
                       </div>
                       {touched && errors.name && (
@@ -445,9 +462,8 @@ export default function CheckoutPage() {
                             setIdNumber(e.target.value);
                             if (errors.idNumber) setErrors((prev) => ({ ...prev, idNumber: '' }));
                           }}
-                          className={`${inputClass} pl-10 ${
-                            touched && errors.idNumber ? 'border-rose-500 focus:ring-rose-500' : ''
-                          }`}
+                          className={`${inputClass} pl-10 ${touched && errors.idNumber ? 'border-rose-500 focus:ring-rose-500' : ''
+                            }`}
                         />
                       </div>
                       {touched && errors.idNumber && (
@@ -475,9 +491,8 @@ export default function CheckoutPage() {
                             setPhone(e.target.value);
                             if (errors.phone) setErrors((prev) => ({ ...prev, phone: '' }));
                           }}
-                          className={`${inputClass} pl-10 ${
-                            touched && errors.phone ? 'border-rose-500 focus:ring-rose-500' : ''
-                          }`}
+                          className={`${inputClass} pl-10 ${touched && errors.phone ? 'border-rose-500 focus:ring-rose-500' : ''
+                            }`}
                         />
                       </div>
                       {touched && errors.phone && (
@@ -538,11 +553,10 @@ export default function CheckoutPage() {
                           return copy;
                         });
                       }}
-                      className={`p-4 rounded-2xl border text-left transition-all cursor-pointer flex items-start gap-3 ${
-                        deliveryType === 'inmediata'
+                      className={`p-4 rounded-2xl border text-left transition-all cursor-pointer flex items-start gap-3 ${deliveryType === 'inmediata'
                           ? 'bg-amber-500 text-stone-950 border-amber-500 shadow-md shadow-amber-500/20 font-bold'
                           : 'bg-background hover:bg-muted text-foreground border-input'
-                      }`}
+                        }`}
                     >
                       <div className="w-8 h-8 rounded-xl bg-amber-600/20 flex items-center justify-center shrink-0 mt-0.5">
                         <Zap
@@ -568,11 +582,10 @@ export default function CheckoutPage() {
                     <button
                       type="button"
                       onClick={() => setDeliveryType('programada')}
-                      className={`p-4 rounded-2xl border text-left transition-all cursor-pointer flex items-start gap-3 ${
-                        deliveryType === 'programada'
+                      className={`p-4 rounded-2xl border text-left transition-all cursor-pointer flex items-start gap-3 ${deliveryType === 'programada'
                           ? 'bg-amber-50 dark:bg-amber-950/40 border-amber-500 text-amber-950 dark:text-amber-200 ring-2 ring-amber-500/20 shadow-sm font-semibold'
                           : 'bg-background hover:bg-muted text-foreground border-input'
-                      }`}
+                        }`}
                     >
                       <div className="w-8 h-8 rounded-xl bg-amber-500/10 flex items-center justify-center shrink-0 mt-0.5">
                         <Calendar size={18} className="text-amber-500" />
@@ -618,11 +631,10 @@ export default function CheckoutPage() {
                           min={getMinDateTime()}
                           value={scheduledDateTime}
                           onChange={(e) => handleDateTimeChange(e.target.value)}
-                          className={`w-full bg-background border ${
-                            touched && errors.scheduledDateTime
+                          className={`w-full bg-background border ${touched && errors.scheduledDateTime
                               ? 'border-rose-500 ring-2 ring-rose-500/20 focus:border-rose-500'
                               : 'border-input hover:border-amber-400 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20'
-                          } rounded-xl px-4 py-2.5 text-foreground placeholder:text-muted-foreground text-sm focus:outline-none transition-all shadow-sm`}
+                            } rounded-xl px-4 py-2.5 text-foreground placeholder:text-muted-foreground text-sm focus:outline-none transition-all shadow-sm`}
                         />
                         {touched && errors.scheduledDateTime && (
                           <p className="text-[11px] text-rose-500 flex items-center gap-1 mt-1 font-medium">
@@ -688,6 +700,9 @@ export default function CheckoutPage() {
                     </button>
                   </div>
 
+                  {/* Free Delivery Banner Indicator */}
+                  <FreeDeliveryProgress compact />
+
                   {/* Products List with Quantities */}
                   <div className="space-y-3 max-h-72 overflow-y-auto pr-1">
                     {items.map((item) => (
@@ -752,16 +767,27 @@ export default function CheckoutPage() {
                   <div className="space-y-2 pt-3 border-t border-border">
                     <div className="flex justify-between text-xs text-muted-foreground">
                       <span>Subtotal productos</span>
-                      <span>${totalPrice.toLocaleString('en-US')} USD</span>
+                      <span>
+                        ${subtotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} USD
+                      </span>
                     </div>
-                    <div className="flex justify-between text-xs text-muted-foreground">
-                      <span>Envío a domicilio</span>
-                      <span className="text-emerald-600 font-medium">Coordinado por WhatsApp</span>
+                    <div className="flex justify-between text-xs items-center">
+                      <span className="text-muted-foreground">Costo de Envío (Caracas)</span>
+                      {isFreeDelivery ? (
+                        <span className="text-emerald-500 font-bold flex items-center gap-1">
+                          <CheckCircle2 size={13} strokeWidth={2.5} />
+                          ¡GRATIS!
+                        </span>
+                      ) : (
+                        <span className="text-emerald-600 font-medium">
+                          Coordinado por WhatsApp
+                        </span>
+                      )}
                     </div>
                     <div className="flex justify-between text-base sm:text-lg font-bold text-foreground pt-2 border-t border-border">
                       <span>Total a Pagar</span>
                       <span className="text-primary text-xl font-black">
-                        ${totalPrice.toLocaleString('en-US')} USD
+                        ${total.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} USD
                       </span>
                     </div>
 
@@ -815,11 +841,10 @@ export default function CheckoutPage() {
                           key={opt.id}
                           type="button"
                           onClick={() => togglePaymentMethod(opt.id)}
-                          className={`w-full p-3.5 rounded-2xl border text-left transition-all cursor-pointer flex items-center justify-between gap-3 ${
-                            isSelected
+                          className={`w-full p-3.5 rounded-2xl border text-left transition-all cursor-pointer flex items-center justify-between gap-3 ${isSelected
                               ? 'bg-amber-50 dark:bg-amber-950/40 border-amber-500 text-amber-950 dark:text-amber-200 ring-2 ring-amber-500/20 shadow-sm'
                               : 'bg-background hover:bg-muted text-foreground border-input'
-                          }`}
+                            }`}
                         >
                           <div className="flex items-center gap-3">
                             <Image
@@ -835,11 +860,10 @@ export default function CheckoutPage() {
                             </div>
                           </div>
                           <div
-                            className={`w-5 h-5 rounded-lg border flex items-center justify-center shrink-0 transition-colors ${
-                              isSelected
+                            className={`w-5 h-5 rounded-lg border flex items-center justify-center shrink-0 transition-colors ${isSelected
                                 ? 'bg-amber-500 border-amber-500 text-stone-950'
                                 : 'border-muted-foreground/40 bg-background'
-                            }`}
+                              }`}
                           >
                             {isSelected && <Check size={13} strokeWidth={3} />}
                           </div>
@@ -851,31 +875,31 @@ export default function CheckoutPage() {
                   {/* Aclaratoria de tasa al seleccionar Pago Móvil o Transferencia */}
                   {(paymentMethods.includes('Pago Móvil') ||
                     paymentMethods.includes('Transferencia')) && (
-                    <div className="p-3 rounded-xl bg-amber-500/10 dark:bg-stone-900/60 border border-amber-500/20 text-amber-950 dark:text-stone-300 text-xs leading-relaxed flex items-start gap-2.5">
-                      <svg
-                        className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                        />
-                      </svg>
-                      <p>
-                        Para pagos en Bolívares (Pago Móvil / Transferencia), el monto exacto se
-                        calcula a la{' '}
-                        <strong>
-                          tasa oficial del Banco Central de Venezuela (BCV) vigente a la tasa del
-                          día
-                        </strong>
-                        .
-                      </p>
-                    </div>
-                  )}
+                      <div className="p-3 rounded-xl bg-amber-500/10 dark:bg-stone-900/60 border border-amber-500/20 text-amber-950 dark:text-stone-300 text-xs leading-relaxed flex items-start gap-2.5">
+                        <svg
+                          className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                          />
+                        </svg>
+                        <p>
+                          Para pagos en Bolívares (Pago Móvil / Transferencia), el monto exacto se
+                          calcula a la{' '}
+                          <strong>
+                            tasa oficial del Banco Central de Venezuela (BCV) vigente a la tasa del
+                            día
+                          </strong>
+                          .
+                        </p>
+                      </div>
+                    )}
 
                   {touched && errors.paymentMethods && (
                     <p className="text-[11px] text-rose-600 mt-1 flex items-center gap-1">
@@ -890,11 +914,10 @@ export default function CheckoutPage() {
                     type="button"
                     onClick={handleConfirmOrder}
                     disabled={isSubmitting || isScheduledInvalid}
-                    className={`whatsapp-btn w-full font-bold shadow-xl shadow-emerald-600/25 text-sm sm:text-base py-4 ${
-                      isSubmitting || isScheduledInvalid
+                    className={`whatsapp-btn w-full font-bold shadow-xl shadow-emerald-600/25 text-sm sm:text-base py-4 ${isSubmitting || isScheduledInvalid
                         ? 'opacity-60 cursor-not-allowed'
                         : 'cursor-pointer hover:brightness-105'
-                    }`}
+                      }`}
                   >
                     {isSubmitting ? (
                       <>

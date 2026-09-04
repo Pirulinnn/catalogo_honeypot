@@ -50,7 +50,7 @@ export default function Hero() {
         {/* ─── Estructura y Distribución (Desktop & Mobile) ─── */}
         <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-8 lg:items-stretch">
           {/* Lado Izquierdo / Superior: Foto de la Botella (Ancho Completo Superior) */}
-          <div className="relative w-full aspect-[4/5] sm:aspect-auto sm:h-full sm:min-h-[460px] rounded-t-[32px] sm:rounded-2xl overflow-hidden bg-[#e5a823] shadow-inner">
+          <div className="relative w-full aspect-[4/5] sm:aspect-auto sm:h-full sm:min-h-[460px] rounded-t-[32px] sm:rounded-2xl overflow-hidden bg-[#e5a823] shadow-inner [mask-image:linear-gradient(to_bottom,black_72%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_bottom,black_72%,transparent_100%)] sm:[mask-image:none] sm:[-webkit-mask-image:none]">
             <Image
               src={PRODUCT_IMAGE}
               alt="Frasco de Miel 100% Pura de Abeja Honey Pot cosechada en Guanare Portuguesa"
@@ -58,6 +58,8 @@ export default function Hero() {
               priority
               className="object-cover object-center"
             />
+            {/* Degradado de fusión inferior para eliminar corte en móvil */}
+            <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-stone-950 via-stone-950/60 to-transparent pointer-events-none sm:hidden z-10" />
           </div>
 
           {/* Lado Derecho / Inferior: Panel de Texto Translúcido (Inset + Overlap en Móvil) */}

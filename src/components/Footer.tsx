@@ -69,27 +69,49 @@ function HoneyDripDivider() {
       aria-hidden="true"
     >
       <svg
-        className="w-full h-10 sm:h-16 md:h-20 block"
-        viewBox="0 0 1200 120"
+        className="w-full h-14 sm:h-20 md:h-28 lg:h-32 block"
+        viewBox="0 0 1440 160"
         preserveAspectRatio="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        {/* Wavy base */}
+        {/* Trazado de miel más alargado, estrecho y viscoso */}
         <path
-          d="M0,40 C100,80 200,10 300,50 C400,90 500,20 600,60 C700,100 800,30 900,55 C1000,80 1100,35 1200,50 L1200,120 L0,120 Z"
+          d="
+            M 0,45
+            C 25,45 25,105 50,105
+            C 73,105 73,30 95,30
+            C 120,30 120,80 145,80
+            C 170,80 170,25 195,25
+            C 220,25 220,130 245,130
+            C 273,130 273,35 300,35
+            C 325,35 325,75 350,75
+            C 375,75 375,25 400,25
+            C 428,25 428,140 455,140
+            C 485,140 485,30 515,30
+            C 540,30 540,90 565,90
+            C 590,90 590,35 615,35
+            C 643,35 643,125 670,125
+            C 698,125 698,25 725,25
+            C 750,25 750,70 775,70
+            C 800,70 800,30 825,30
+            C 853,30 853,145 880,145
+            C 910,145 910,35 940,35
+            C 965,35 965,85 990,85
+            C 1015,85 1015,25 1040,25
+            C 1068,25 1068,130 1095,130
+            C 1123,130 1123,30 1150,30
+            C 1175,30 1175,80 1200,80
+            C 1225,80 1225,35 1250,35
+            C 1278,35 1278,125 1305,125
+            C 1333,125 1333,30 1360,30
+            C 1383,30 1383,75 1405,75
+            C 1423,75 1423,40 1440,40
+            L 1440,160
+            L 0,160
+            Z
+          "
           className="fill-stone-950"
         />
-        {/* Honey drip drops */}
-        <ellipse cx="150" cy="52" rx="12" ry="18" className="fill-stone-950" />
-        <ellipse cx="420" cy="60" rx="10" ry="22" className="fill-stone-950" />
-        <ellipse cx="680" cy="55" rx="14" ry="25" className="fill-stone-950" />
-        <ellipse cx="950" cy="48" rx="11" ry="20" className="fill-stone-950" />
-        {/* Smaller drips for organic feel */}
-        <ellipse cx="80" cy="46" rx="6" ry="10" className="fill-stone-950" />
-        <ellipse cx="280" cy="38" rx="7" ry="12" className="fill-stone-950" />
-        <ellipse cx="550" cy="42" rx="8" ry="14" className="fill-stone-950" />
-        <ellipse cx="820" cy="35" rx="6" ry="11" className="fill-stone-950" />
-        <ellipse cx="1080" cy="44" rx="9" ry="15" className="fill-stone-950" />
       </svg>
     </div>
   );

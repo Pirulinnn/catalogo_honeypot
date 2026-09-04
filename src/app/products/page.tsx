@@ -8,7 +8,7 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Catálogo de Miel Pura de Abeja, Propóleo y Polen',
   description:
-    'Compra miel pura 100% cruda, polen floral deshidratado y extracto de propóleo al 30% al detal y al mayor en Caracas y Venezuela. Precios en USD a tasa oficial BCV.',
+    'Compra miel pura 100% cruda, polen floral y extracto de propóleo al 30% al detal y al mayor en Caracas y Venezuela. Precios en USD a tasa oficial BCV.',
   alternates: {
     canonical: '/products',
   },

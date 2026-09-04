@@ -91,13 +91,13 @@ export const products: Product[] = [
   // ==========================================
   {
     id: 6,
-    name: 'Polen Floral Deshidratado',
+    name: 'Polen Floral',
     category: 'colmena',
     price: 15,
     weight: '125g',
     image: '/assets/images/products/productos_de_la_colmena/polen_presentacion_125gr.png',
     description:
-      'Granos de polen floral multifloral deshidratados a baja temperatura para preservar nutrientes. Superalimento rico en proteínas completas, vitaminas B y minerales.',
+      'Granos de polen floral multifloral a baja temperatura para preservar nutrientes. Superalimento rico en proteínas completas, vitaminas B y minerales.',
     origin: 'Cosecha Artesanal',
     featured: false,
   },
@@ -215,7 +215,7 @@ export const products: Product[] = [
   },
   {
     id: 16,
-    name: 'Polen Floral Deshidratado',
+    name: 'Polen Floral',
     category: 'mayor',
     price: 125,
     weight: 'Caja x12 (125g c/u)',
@@ -227,7 +227,7 @@ export const products: Product[] = [
   },
   {
     id: 17,
-    name: 'Polen Floral Deshidratado',
+    name: 'Polen Floral',
     category: 'mayor',
     price: 38.5,
     weight: '500g',
@@ -239,7 +239,7 @@ export const products: Product[] = [
   },
   {
     id: 18,
-    name: 'Polen Floral Deshidratado',
+    name: 'Polen Floral',
     category: 'mayor',
     price: 75,
     weight: '1kg',

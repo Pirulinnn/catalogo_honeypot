@@ -333,12 +333,12 @@ export default function CheckoutPage() {
 
           <Link href="/" className="inline-flex items-center">
             <Image
-              src="/assets/images/logo.svg"
+              src="/icon.png"
               alt="Honeypot"
               width={40}
               height={40}
-              style={{ width: '40px', height: 'auto', borderRadius: '30%' }}
-              className="h-8 sm:h-10 w-auto"
+              style={{ width: '40px', height: '40px', borderRadius: '50%' }}
+              className="h-8 sm:h-10 w-8 sm:w-10 object-cover rounded-full"
               priority
             />
           </Link>

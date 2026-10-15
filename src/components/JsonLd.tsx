@@ -23,7 +23,7 @@ export default function JsonLd() {
         description:
           'Productor y distribuidor de miel 100% pura y cruda, polen floral y propóleo cosechados de forma artesanal en Guanare, Estado Portuguesa, con despacho y delivery en Caracas y toda Venezuela.',
         url: siteUrl,
-        logo: `${siteUrl}/assets/images/logo.svg`,
+        logo: `${siteUrl}/icon.png`,
         image: `${siteUrl}/assets/images/og_honeypot.jpg`,
         telephone: '+584127665595',
         email: 'honeypot.ve@gmail.com',

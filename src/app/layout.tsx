@@ -67,8 +67,8 @@ export const metadata: Metadata = {
     images: [OG_IMAGE_URL],
   },
   icons: {
-    icon: [{ url: '/assets/images/logo.svg', type: 'image/svg+xml' }],
-    apple: [{ url: '/assets/images/app_logo.png' }],
+    icon: [{ url: '/icon.png', sizes: '512x512', type: 'image/png' }],
+    apple: [{ url: '/apple-icon.png', sizes: '512x512', type: 'image/png' }],
   },
   manifest: '/manifest.webmanifest',
   other: {

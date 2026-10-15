@@ -39,20 +39,18 @@ export default function FreeDeliveryProgress({
 
   return (
     <div
-      className={`w-full rounded-2xl border transition-all duration-300 ${
-        isFreeDelivery
+      className={`w-full rounded-2xl border transition-all duration-300 ${isFreeDelivery
           ? 'bg-gradient-to-r from-emerald-50 via-teal-50/70 to-emerald-100/50 dark:from-emerald-950/40 dark:via-teal-950/30 dark:to-emerald-900/30 border-emerald-300 dark:border-emerald-700/50 shadow-sm'
           : 'bg-gradient-to-r from-amber-50/90 via-amber-50/50 to-orange-50/60 dark:from-amber-950/40 dark:via-amber-900/20 dark:to-stone-900/40 border-amber-200/80 dark:border-amber-800/40 shadow-sm'
-      } ${compact ? 'p-2.5 sm:p-3' : 'p-3 sm:p-4'} ${className}`}
+        } ${compact ? 'p-2.5 sm:p-3' : 'p-3 sm:p-4'} ${className}`}
     >
       <div className="flex items-center justify-between gap-1.5 sm:gap-2 mb-1.5 sm:mb-2">
         <div className="flex items-center gap-1.5 sm:gap-2 min-w-0 flex-1">
           <div
-            className={`w-6 h-6 sm:w-7 sm:h-7 rounded-lg sm:rounded-xl flex items-center justify-center shrink-0 transition-colors ${
-              isFreeDelivery
+            className={`w-6 h-6 sm:w-7 sm:h-7 rounded-lg sm:rounded-xl flex items-center justify-center shrink-0 transition-colors ${isFreeDelivery
                 ? 'bg-emerald-500 text-white shadow-sm shadow-emerald-500/30'
                 : 'bg-amber-500 text-white shadow-sm shadow-amber-500/30'
-            }`}
+              }`}
           >
             {isFreeDelivery ? (
               <CheckCircle2 size={14} strokeWidth={2.5} className="animate-bounce" />
@@ -68,7 +66,7 @@ export default function FreeDeliveryProgress({
                 <span className="text-emerald-700 dark:text-emerald-300 underline decoration-emerald-400">
                   Delivery GRATIS
                 </span>
-                <span>! 🎉</span>
+                <span>! </span>
               </span>
             ) : subtotal === 0 ? (
               <span className="text-stone-800 dark:text-stone-200">
@@ -97,11 +95,10 @@ export default function FreeDeliveryProgress({
         {/* Badge porcentaje o estado conciso */}
         <div className="shrink-0">
           <span
-            className={`text-[10px] sm:text-[11px] font-bold px-1.5 sm:px-2 py-0.5 rounded-full border ${
-              isFreeDelivery
+            className={`text-[10px] sm:text-[11px] font-bold px-1.5 sm:px-2 py-0.5 rounded-full border ${isFreeDelivery
                 ? 'bg-emerald-100 text-emerald-800 border-emerald-300 dark:bg-emerald-900/60 dark:text-emerald-200 dark:border-emerald-700'
                 : 'bg-amber-100 text-amber-900 border-amber-300/80 dark:bg-amber-900/60 dark:text-amber-200 dark:border-amber-700'
-            }`}
+              }`}
           >
             {isFreeDelivery ? '¡Listo!' : subtotal === 0 ? '$20 USD' : `${Math.round(percentage)}%`}
           </span>
@@ -114,11 +111,10 @@ export default function FreeDeliveryProgress({
           initial={{ width: 0 }}
           animate={{ width: `${percentage}%` }}
           transition={{ duration: 0.5, ease: 'easeOut' }}
-          className={`h-full rounded-full relative ${
-            isFreeDelivery
+          className={`h-full rounded-full relative ${isFreeDelivery
               ? 'bg-gradient-to-r from-emerald-500 to-teal-400'
               : 'bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600'
-          }`}
+            }`}
         >
           <div className="absolute inset-0 bg-white/25 rounded-full animate-pulse" />
         </motion.div>

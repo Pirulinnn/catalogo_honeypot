@@ -173,7 +173,7 @@ export default function Footer() {
               </div>
 
               <p className="text-sm leading-relaxed text-stone-400 max-w-xs">
-                Miel 100% pura y artesanal cosechada en Guanare, Portuguesa. Envíos y entregas en Caracas y toda Venezuela.
+                Miel 100% pura y artesanal cosechada en Guanare, Portuguesa. Envíos, entregas en Caracas y toda Venezuela.
               </p>
 
               {/* Location & Fiscal info */}

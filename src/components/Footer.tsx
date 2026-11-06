@@ -262,8 +262,8 @@ export default function Footer() {
           </div>
 
           {/* ── Legal Bar ── */}
-          <div className="border-t border-stone-800/80 mt-12 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone-500">
-            <div className="flex flex-wrap items-center justify-center sm:justify-start gap-x-2 gap-y-1 text-center sm:text-left">
+          <div className="border-t border-stone-800/80 mt-12 pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-stone-500">
+            <div className="flex flex-wrap items-center justify-center md:justify-start gap-x-2 gap-y-1 text-center md:text-left">
               <p className="flex items-center gap-1.5">
                 © {new Date().getFullYear()}{' '}
                 <span className="text-stone-300 font-medium">{COMPANY_NAME}</span>. Todos los
@@ -273,7 +273,26 @@ export default function Footer() {
               <span className="hidden sm:inline text-stone-700">•</span>
               <span className="font-mono text-stone-400">RIF: {COMPANY_RIF}</span>
             </div>
-            <p className="text-stone-500 text-[11px]">Miel 100% pura • Hecho en Venezuela</p>
+
+            <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-xs text-stone-400">
+              <Link
+                href="/terminos-y-condiciones"
+                className="hover:text-amber-400 underline underline-offset-4 decoration-stone-700 transition-colors"
+              >
+                Términos y Condiciones
+              </Link>
+              <span className="text-stone-700">•</span>
+              <Link
+                href="/politica-de-privacidad"
+                className="hover:text-amber-400 underline underline-offset-4 decoration-stone-700 transition-colors"
+              >
+                Política de Privacidad
+              </Link>
+              <span className="hidden sm:inline text-stone-700">•</span>
+              <span className="text-stone-500 text-[11px] block sm:inline">
+                Miel 100% pura • Hecho en Venezuela
+              </span>
+            </div>
           </div>
         </div>
       </footer>

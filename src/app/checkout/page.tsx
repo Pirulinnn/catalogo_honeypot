@@ -947,6 +947,26 @@ export default function CheckoutPage() {
                       entrega.
                     </p>
                   </div>
+
+                  <p className="text-[11px] text-muted-foreground text-center px-2 leading-relaxed">
+                    Al confirmar tu pedido, confirmas que has leído y aceptas nuestros{' '}
+                    <Link
+                      href="/terminos-y-condiciones"
+                      target="_blank"
+                      className="text-amber-800 dark:text-amber-400 underline underline-offset-2 hover:text-amber-600 font-medium"
+                    >
+                      Términos y Condiciones
+                    </Link>{' '}
+                    y nuestra{' '}
+                    <Link
+                      href="/politica-de-privacidad"
+                      target="_blank"
+                      className="text-amber-800 dark:text-amber-400 underline underline-offset-2 hover:text-amber-600 font-medium"
+                    >
+                      Política de Privacidad
+                    </Link>
+                    .
+                  </p>
                 </div>
               </div>
             </div>

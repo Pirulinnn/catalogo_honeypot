@@ -1,0 +1,4 @@
+User-Agent: *
+Allow: /
+
+Sitemap: https://honeypotve.com/sitemap.xml
